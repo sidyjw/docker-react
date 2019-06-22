@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  web-dev:
+    build:
+      context: .
+      target: dev
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/node_modules
+      - .:/app
+  web-prod:
+    build:
+      context: .
+      target: prod
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+  test:
+    build:
+      context: .
+      target: dev
+      dockerfile: Dockerfile
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["test"]
