@@ -6,4 +6,4 @@ before_install:
   - docker build -t sidyjw/docker-react --target dev .
 
 script:
-  - docker run --rm sidyjw/docker-react run test -- --coverage
+  - docker run --rm -e CI=true sidyjw/docker-react run test -- --coverage
