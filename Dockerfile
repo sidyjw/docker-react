@@ -13,4 +13,5 @@ COPY --from=dev /app .
 RUN npm run build
 
 FROM nginx:alpine as prod
+EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
